@@ -3,17 +3,17 @@
 var plateNumber = {
     localGovtAreas: require('./localGovtArea.json'),
 
-    genPlateNumber: function(localGovtName) {
+    genPlateNumber: (localGovtName) => {
         if(! plateNumber.localGovtAreas.hasOwnProperty(localGovtName)){
             return "Invalid Input or Local Govt doesn't exist";
         }
 
         return plateNumber.localGovtAreas[toUpperCase(localGovtName)] +  '-' + plateNumber.genRandomNumber(0, 999) + plateNumber.genlastTwoLetters();
     },
-    genRandomNumber: function(min, max) {
+    genRandomNumber: (min, max) => {
         return Math.floor(Math.random() * (max - min + 1)) + min;
     },
-    genlastTwoLetters: function() {
+    genlastTwoLetters: () => {
         var text = "";
         var letters = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
 
@@ -24,6 +24,4 @@ var plateNumber = {
     }
 };
 
-module.exports = {
-    plateNumber: plateNumber
-}
+module.exports = { plateNumber }
